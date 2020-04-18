@@ -1,30 +1,14 @@
-import React, { useState } from "react";
-import { Result, Button } from "antd";
+import React from "react";
+import { Result } from "antd";
 import { CompassOutlined } from "@ant-design/icons";
+import CreateNote from "../CreateNote/CreateNote";
 
-const LandingCreate = () => {
-  const [loading, setloading] = useState(false);
-
-  const enterloading = () => {
-    setloading(true);
-    setTimeout(() => {
-      setloading(false);
-    }, 700);
-  };
+const LandingCreate = (props) => {
   return (
     <Result
       icon={<CompassOutlined />}
-      title="Great, Create your first note here"
-      extra={
-        <Button
-          type="primary"
-          size="large"
-          loading={loading}
-          onClick={enterloading}
-        >
-          Create
-        </Button>
-      }
+      title="Great! Create your first note here"
+      extra={<CreateNote onAdd={props.onAdd} />}
     />
   );
 };
