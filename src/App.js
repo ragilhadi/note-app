@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import LandingCreate from "./Components/LandingCreate/LandingCreate";
 import NoteCard from "./Components/NoteCard/NoteCard";
 import CreateNote from "./Components/CreateNote/CreateNote";
+import { Row } from "antd";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -19,16 +20,18 @@ function App() {
       <Navbar />
       <CreateNote onAdd={addNote} />
 
-      {notes.map((noteItem, index) => {
-        return (
-          <NoteCard
-            key={index}
-            id={index}
-            tittle={noteItem.tittle}
-            content={noteItem.content}
-          />
-        );
-      })}
+      <Row gutter={[32, 32]}>
+        {notes.map((noteItem, index) => {
+          return (
+            <NoteCard
+              key={index}
+              id={index}
+              header={noteItem.tittle}
+              content={noteItem.content}
+            />
+          );
+        })}
+      </Row>
     </div>
   );
 }
